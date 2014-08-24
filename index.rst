@@ -6,6 +6,8 @@
 Welcome to the khmer-recipes site!
 ==================================
 
+Some recipes:
+
 .. toctree::
    :maxdepth: 1
 
