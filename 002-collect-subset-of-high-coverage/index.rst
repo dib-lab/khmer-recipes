@@ -2,7 +2,9 @@ Recipe 2: Collect a subset of reads from a high-coverage data set
 #################################################################
 
 The below is a recipe for subsetting a high-coverage data set to a
-given average coverage.
+given average coverage. This differs from digital normalization
+because the relative abundances of reads should be maintained -- what
+changes is the *average* coverage across all the reads.
 
 Uses for this recipe include subsampling reads from a super-high
 coverage data set for the purpose of assembly, as well as more
@@ -45,7 +47,7 @@ simply specify the khmer release required.
    python ~/dev/dbg-graph-null/make-reads.py -C 150 genome.fa > reads.fa
 
 Let's assume you have a simple genome with some 5x repeats, and you've
-done some shutgon sequencing to a coverage of 150 or higher.  If your reads are
+done some shotgun sequencing to a coverage of 150 or higher.  If your reads are
 in ``reads.fa``
 ::
    

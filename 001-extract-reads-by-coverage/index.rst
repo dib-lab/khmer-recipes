@@ -43,7 +43,7 @@ simply specify the khmer release required.
    python ~/dev/dbg-graph-null/make-reads.py -C 150 genome.fa > reads.fa
 
 Let's assume you have a simple genome with some 5x repeats, and you've
-done some shutgon sequencing to a coverage of 150.  If your reads are
+done some shotgun sequencing to a coverage of 150.  If your reads are
 in ``reads.fa``, you can generate a k-mer spectrum from your genome
 with k=20:
 ::
