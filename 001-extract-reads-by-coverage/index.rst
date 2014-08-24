@@ -1,6 +1,12 @@
 Recipe 1: Extract reads by coverage
 ###################################
 
+Note: at the moment, the khmer script ``slice-reads-by-coverage`` is
+in the khmer repository under branch `feature/collect_reads
+<https://github.com/ged-lab/khmer/pull/583>`__.  Once we've merged it
+into the master branch and cut a release, we'll remove this note and
+simply specify the khmer release required.
+
 .. shell start
 
 .. ::
@@ -27,23 +33,24 @@ Recipe 1: Extract reads by coverage
    # build a read set
    python ~/dev/dbg-graph-null/make-reads.py -C 150 genome.fa > reads.fa
 
-Let's assume we have a simple genome with some 5x repeats; if you generate
-a k-mer spectrum from your genome with k=20
-::
+Let's assume you have a simple genome with some 5x repeats, and you've
+done some shutgon sequencing to a coverage of 150.  If your reads are
+in ``reads.fa``, you can generate a k-mer spectrum from your genome
+with k=20 ::
 
    load-into-counting.py -x 1e8 -k 20 reads.kh reads.fa
    abundance-dist.py -s reads.kh reads.fa reads.dist
    ./plot-abundance-dist.py reads.dist reads-dist.png --ymax=300
 
-it would look something like this:
+and it would look something like this:
 
 .. image:: reads-dist.png
    :width: 500px
 
-You can see three peaks: one on the far right, which contains the
-high-abundance k-mers from your repeats; one in the middle, which
-contains the k-mers from the single-copy genome; and one on the left,
-which contains all of the erroneous k-mers.
+For this (simulated) data set, you can see three peaks: one on the far
+right, which contains the high-abundance k-mers from your repeats; one
+in the middle, which contains the k-mers from the single-copy genome;
+and one on the left, which contains all of the erroneous k-mers.
 
 This is a useful diagnostic tool, but if you wanted to extract one
 peak or another, you'd have to compute a summary statistic of some
@@ -81,7 +88,7 @@ Next, grab the reads greater in abundance than 200; these are the repeats.  We'l
 
    ~/dev/khmer/sandbox/slice-reads-by-coverage.py reads.kh reads.fa reads-repeats.fa -m 200
 
-Now let's replot the read coverage spectra, first for the genome
+Now let's replot the read coverage spectra, first for the genome:
 ::
 
    
@@ -89,7 +96,7 @@ Now let's replot the read coverage spectra, first for the genome
    ~/dev/khmer/sandbox/calc-median-distribution.py reads-genome.kh reads-genome.fa reads-genome.dist
    ./plot-coverage-dist.py reads-genome.dist reads-genome.png --xmax=600 --ymax=500
 
-and then for the repeats
+and then for the repeats:
 ::
    
    load-into-counting.py -x 1e8 -k 20 reads-repeats.kh reads-repeats.fa
@@ -101,3 +108,13 @@ and then for the repeats
 
 .. image:: reads-repeats.png
    :width: 500px
+
+and voila!  As you can see we have the reads of high coverage in
+``reads-repeats.fa``, and the reads of intermediate coverage in
+``reads-genome.fa``.
+
+If you look closely, you might note that some reads seem to fall
+outside the specified slice categories above -- that's presumably
+because their coverage was predicated on the coverage of other reads
+in the whole data set, and now that we've sliced out various reads
+their coverage has dropped.
