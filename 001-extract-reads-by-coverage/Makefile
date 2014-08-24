@@ -1,7 +1,10 @@
 all: reads.fa index.html
 
 clean:
-	-rm -f index.sh reads.fa genome.fa repeat.fa
+	-rm -f index.sh *.fa *.kh *.kh.info *.dist index.html
+
+distclean: clean
+	-rm -f *.png
 
 index.sh: index.rst
 	~/dev/literate-resting/scan.sh index.rst

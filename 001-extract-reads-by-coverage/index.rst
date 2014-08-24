@@ -1,6 +1,15 @@
 Recipe 1: Extract reads by coverage
 ###################################
 
+The below is a recipe for computing coverage spectra and slicing reads
+out of a data set based on their coverage, with no assembly required.
+
+Uses for extracting reads by coverage include isolating repeats or
+pulling out mitochondrial DNA.  This approach won't work on digitally
+normalized reads, and is primarily intended for genomes and
+low-complexity metagenomes.  For high-complexity metagenomes we
+recommend partitioning.
+
 Note: at the moment, the khmer script ``slice-reads-by-coverage`` is
 in the khmer repository under branch `feature/collect_reads
 <https://github.com/ged-lab/khmer/pull/583>`__.  Once we've merged it
@@ -36,8 +45,9 @@ simply specify the khmer release required.
 Let's assume you have a simple genome with some 5x repeats, and you've
 done some shutgon sequencing to a coverage of 150.  If your reads are
 in ``reads.fa``, you can generate a k-mer spectrum from your genome
-with k=20 ::
-
+with k=20:
+::
+   
    load-into-counting.py -x 1e8 -k 20 reads.kh reads.fa
    abundance-dist.py -s reads.kh reads.fa reads.dist
    ./plot-abundance-dist.py reads.dist reads-dist.png --ymax=300
@@ -50,7 +60,8 @@ and it would look something like this:
 For this (simulated) data set, you can see three peaks: one on the far
 right, which contains the high-abundance k-mers from your repeats; one
 in the middle, which contains the k-mers from the single-copy genome;
-and one on the left, which contains all of the erroneous k-mers.
+and one all the way on the left at ~1, which contains all of the
+erroneous k-mers.
 
 This is a useful diagnostic tool, but if you wanted to extract one
 peak or another, you'd have to compute a summary statistic of some
@@ -79,18 +90,17 @@ interval.
 
 First, let's grab the reads between 50 and 200 coverage -- these are the single-copy genome components.  We'll put them in ``reads-genome.fa``.
 ::
-
+   
    ~/dev/khmer/sandbox/slice-reads-by-coverage.py reads.kh reads.fa reads-genome.fa -m 50 -M 200
 
 
 Next, grab the reads greater in abundance than 200; these are the repeats.  We'll put them in ``reads-repeats.fa``.
 ::
-
+  
    ~/dev/khmer/sandbox/slice-reads-by-coverage.py reads.kh reads.fa reads-repeats.fa -m 200
 
 Now let's replot the read coverage spectra, first for the genome:
 ::
-
    
    load-into-counting.py -x 1e8 -k 20 reads-genome.kh reads-genome.fa
    ~/dev/khmer/sandbox/calc-median-distribution.py reads-genome.kh reads-genome.fa reads-genome.dist
