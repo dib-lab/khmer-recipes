@@ -51,7 +51,7 @@ in ``reads.fa``, you can get an estimate of the single-copy genome size
 (here known to be 5500 bp) by running ``normalize-by-median.py``
 ::
    
-   ~/dev/khmer/scripts/normalize-by-median.py -x 1e8 -k 20 -C 20 --savetable reads.kh -R report.txt reads.fa 
+   ~/dev/khmer/scripts/normalize-by-median.py -x 1e8 -k 20 -C 20 -R report.txt reads.fa 
    ./estimate-genome-size.py -C 20 -k 20 reads.fa.keep report.txt
 
 This yields the output::
