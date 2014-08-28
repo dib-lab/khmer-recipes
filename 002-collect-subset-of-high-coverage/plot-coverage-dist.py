@@ -16,7 +16,7 @@ args = parser.parse_args()
 
 x = numpy.loadtxt(args.dist_file)
 plot(x[:, 0], x[:, 1])
-xlabel('k-mer coverage')
+xlabel('read coverage (estimated)')
 ylabel('# of reads with that coverage')
 title('read coverage spectrum: %s' % args.dist_file)
 axis(xmin=args.xmin, ymin=args.ymin, xmax=args.xmax, ymax=args.ymax)
