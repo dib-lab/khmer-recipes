@@ -1,23 +1,25 @@
-Recipe 3: Estimate (meta)genome size from unassembled reads
-###########################################################
+Recipe 4: Estimate saturation of sequencing
+###########################################
 
-This recipe provides a time- and memory- efficient way to loosely
-estimate the likely size of your assembled genome or metagenome from
-the raw reads alone.  It does so by using digital normalization to
-assess the size of the coverage-saturated de Bruijn assembly graph
-given the reads provided by you.  It *does* take into account
-coverage, so you need to specify a desired assembly coverage - we
-recommend starting with a coverage of 20.
+This recipe provides a time-efficient way to determine whether you've
+saturated your sequencing depth, i.e. how much new information is
+likely to arrive with your next set of sequencing reads.
+It does so by using digital normalization to generate a "collector's
+curve" of information collection.
 
-Uses for this recipe include estimating the amount of memory required
-to achieve an assembly, providing a lower bound for metagenome assembly
-size and single-copy genome diversiy, and 
+Uses for this recipe include evaluating whether or not you should do
+more sequencing.
 
-This recipe will provide inaccurate estimates on transcriptomes (where
-splice variants will end up confusing the issue - this looks at single-copy
-sequence only) or for metagenomes with high levels of strain variation
-(where the assembler may collapse strain variants that this estimate will
-split).
+This approach is more accurate for low coverage than
+normalize-by-median's reporting, because it collects the redundant
+reads rather than discarding them.
+
+Note: at the moment, the khmer script ``saturate-by-median.py`` needs
+to be updated from branch `cleanup/normalize_and_saturate
+<https://github.com/ged-lab/khmer/pull/586>`__ to run this code
+properly.  Once we've merged it into the master branch and cut a
+release, we'll remove this note and simply specify the khmer release
+required.
 
 .. shell start
 
@@ -51,7 +53,7 @@ saturated to a coverage of 5 with your sequencing.  You can use a variant
 of digital normalization, ``saturate-by-median``, to run a collector's curve:
 ::
 
-   ~/dev/khmer/sandbox/saturate-by-median.py -x 1e8 -k 20 -C 5 -R report.txt reads.fa 
+   ~/dev/khmer/sandbox/saturate-by-median.py -x 1e8 -k 20 -C 5 -R report.txt --report-frequency 10 reads.fa 
 
 Then, plot the resulting saturation curve:
 ::
@@ -65,7 +67,7 @@ The x axis here is the number of reads examined (column 1 in
 report.txt), while the y axis (column 2) is the number of reads that
 are below a coverage of 5 in the data set at that point.  You can see
 here that by the time you had sampled 1000 reads, you'd stopped seeing
-new coverage-5 reads, which suggests that further sequencing is
+new coverage=5 reads, which suggests that further sequencing is
 unnecessary.
 
 If you zoom out on the graph, you'll see that the curve keeps on
