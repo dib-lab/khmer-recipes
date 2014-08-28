@@ -10,14 +10,21 @@ coverage, so you need to specify a desired assembly coverage - we
 recommend starting with a coverage of 20.
 
 Uses for this recipe include estimating the amount of memory required
-to achieve an assembly, providing a lower bound for metagenome assembly
-size and single-copy genome diversiy, and 
+to achieve an assembly and providing a lower bound for metagenome
+assembly size and single-copy genome diversity.
 
 This recipe will provide inaccurate estimates on transcriptomes (where
-splice variants will end up confusing the issue - this looks at single-copy
-sequence only) or for metagenomes with high levels of strain variation
-(where the assembler may collapse strain variants that this estimate will
-split).
+splice variants will end up confusing the issue - this looks at
+single-copy sequence only) or for metagenomes with high levels of
+strain variation (where the assembler may collapse strain variants
+that this estimate will split).
+
+Note: at the moment, the khmer script ``normalize-by-median.py`` needs
+to be updated from branch `cleanup/normalize_and_saturate
+<https://github.com/ged-lab/khmer/pull/586>`__ to run this code
+properly.  Once we've merged it into the master branch and cut a
+release, we'll remove this note and simply specify the khmer release
+required.
 
 .. shell start
 
