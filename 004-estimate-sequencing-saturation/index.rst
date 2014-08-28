@@ -1,0 +1,74 @@
+Recipe 3: Estimate (meta)genome size from unassembled reads
+###########################################################
+
+This recipe provides a time- and memory- efficient way to loosely
+estimate the likely size of your assembled genome or metagenome from
+the raw reads alone.  It does so by using digital normalization to
+assess the size of the coverage-saturated de Bruijn assembly graph
+given the reads provided by you.  It *does* take into account
+coverage, so you need to specify a desired assembly coverage - we
+recommend starting with a coverage of 20.
+
+Uses for this recipe include estimating the amount of memory required
+to achieve an assembly, providing a lower bound for metagenome assembly
+size and single-copy genome diversiy, and 
+
+This recipe will provide inaccurate estimates on transcriptomes (where
+splice variants will end up confusing the issue - this looks at single-copy
+sequence only) or for metagenomes with high levels of strain variation
+(where the assembler may collapse strain variants that this estimate will
+split).
+
+.. shell start
+
+.. ::
+
+   . ~/dev/ipy7/bin/activate
+   
+   # make a 500 bp repeat
+   python ~/dev/dbg-graph-null/make-random-genome.py -l 500 -s 10 > repeat.fa
+   
+   # create a genome with 5kb unique sequence interspersed with 5x 500 bp
+   # repeats.
+   echo '>genome' > genome.fa
+   cat repeat.fa | grep -v ^'>' >> genome.fa
+   python ~/dev/dbg-graph-null/make-random-genome.py -l 1000 -s 1 | grep -v ^'>' >> genome.fa
+   cat repeat.fa | grep -v ^'>' >> genome.fa
+   python ~/dev/dbg-graph-null/make-random-genome.py -l 1000 -s 2 | grep -v ^'>' >> genome.fa
+   cat repeat.fa | grep -v ^'>' >> genome.fa
+   python ~/dev/dbg-graph-null/make-random-genome.py -l 1000 -s 3 | grep -v ^'>' >> genome.fa
+   cat repeat.fa | grep -v ^'>' >> genome.fa
+   python ~/dev/dbg-graph-null/make-random-genome.py -l 1000 -s 4 | grep -v ^'>' >> genome.fa
+   cat repeat.fa | grep -v ^'>' >> genome.fa
+   python ~/dev/dbg-graph-null/make-random-genome.py -l 1000 -s 5 | grep -v ^'>' >> genome.fa
+   
+   # build a read set
+   python ~/dev/dbg-graph-null/make-reads.py -C 150 genome.fa > reads.fa
+
+Let's assume you have a simple genome with some 5x repeats, and you've
+done some shotgun sequencing, and you want to know whether or not you've
+saturated to a coverage of 5 with your sequencing.  You can use a variant
+of digital normalization, ``saturate-by-median``, to run a collector's curve:
+::
+
+   ~/dev/khmer/sandbox/saturate-by-median.py -x 1e8 -k 20 -C 5 -R report.txt reads.fa 
+
+Then, plot the resulting saturation curve:
+::
+
+   ./plot-saturation-curve.py report.txt saturation.png --xmin 0 --ymin 0 --xmax 1500
+
+.. image:: saturation.png
+   :width: 500px
+
+The x axis here is the number of reads examined (column 1 in
+report.txt), while the y axis (column 2) is the number of reads that
+are below a coverage of 5 in the data set at that point.  You can see
+here that by the time you had sampled 1000 reads, you'd stopped seeing
+new coverage-5 reads, which suggests that further sequencing is
+unnecessary.
+
+If you zoom out on the graph, you'll see that the curve keeps on
+climbing, albeit much more slowly.  This is due to the influence of
+error rate on prediction of "novel" reads, and is something we have
+to fix.
