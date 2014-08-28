@@ -1,14 +1,13 @@
 Recipe 3: Estimate (meta)genome size from unassembled reads
 ###########################################################
 
-*NOTE: not done yet*
-
-This recipe provides a time- and memory- efficient way to estimate the
-likely size of your assembled genome or metagenome from the raw reads
-alone.  It does so by using digital normalization to assess the size
-of the coverage-saturated de Bruijn assembly graph given the reads
-provided by you.  It *does* take into account coverage, so you need
-to specify a desired assembly coverage - we recommend a coverage of 10.
+This recipe provides a time- and memory- efficient way to loosely
+estimate the likely size of your assembled genome or metagenome from
+the raw reads alone.  It does so by using digital normalization to
+assess the size of the coverage-saturated de Bruijn assembly graph
+given the reads provided by you.  It *does* take into account
+coverage, so you need to specify a desired assembly coverage - we
+recommend starting with a coverage of 20.
 
 Uses for this recipe include estimating the amount of memory required
 to achieve an assembly, providing a lower bound for metagenome assembly
@@ -17,7 +16,7 @@ size and single-copy genome diversiy, and
 This recipe will provide inaccurate estimates on transcriptomes (where
 splice variants will end up confusing the issue - this looks at single-copy
 sequence only) or for metagenomes with high levels of strain variation
-(where the assembler may collapse strain variants this this estimate will
+(where the assembler may collapse strain variants that this estimate will
 split).
 
 .. shell start
@@ -53,13 +52,14 @@ in ``reads.fa``, you can get an estimate of the single-copy genome size
 ::
    
    ~/dev/khmer/scripts/normalize-by-median.py -x 1e8 -k 20 -C 20 --savetable reads.kh -R report.txt reads.fa 
-   ./estimate-genome-size.py -C 20 -k 20 reads.fa report.txt
+   ./estimate-genome-size.py -C 20 -k 20 reads.fa.keep report.txt
 
-which yields the output::
+This yields the output::
 
    Estimated (meta)genome size is: 8727 bp
 
-.. and looks like this:
-
-.. ..image:: reads-cov.png
-   :width: 500px
+This is off by about 50% for reasons that we don't completely
+understand.  Note that you can get more accurate estimates for this
+data set by increasing C and decreasing k, but 20/20 should work
+about this well for most data sets. (For an E. coli data set, it
+returns 6.5 Mbp, which is only about 25% off.)
