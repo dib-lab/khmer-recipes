@@ -70,3 +70,13 @@ understand.  Note that you can get more accurate estimates for this
 data set by increasing C and decreasing k, but 20/20 should work
 about this well for most data sets. (For an E. coli data set, it
 returns 6.5 Mbp, which is only about 25% off.)
+
+Resources and Links
+~~~~~~~~~~~~~~~~~~~
+
+`This recipe
+<https://github.com/ged-lab/khmer-recipes/tree/master/003-estimate-genome-size>`__
+is hosted in the khmer-recipes repository,
+https://github.com/ged-lab/khmer-recipes/.
+
+It requires the `khmer software <http://khmer.readthedocs.org>`__.

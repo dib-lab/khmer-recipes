@@ -128,3 +128,13 @@ outside the specified slice categories above -- that's presumably
 because their coverage was predicated on the coverage of other reads
 in the whole data set, and now that we've sliced out various reads
 their coverage has dropped.
+
+Resources and Links
+~~~~~~~~~~~~~~~~~~~
+
+`This recipe
+<https://github.com/ged-lab/khmer-recipes/tree/master/001-extract-reads-by-coverage>`__
+is hosted in the khmer-recipes repository,
+https://github.com/ged-lab/khmer-recipes/.
+
+It requires the `khmer software <http://khmer.readthedocs.org>`__.

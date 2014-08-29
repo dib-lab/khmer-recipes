@@ -74,3 +74,13 @@ If you zoom out on the graph, you'll see that the curve keeps on
 climbing, albeit much more slowly.  This is due to the influence of
 error rate on prediction of "novel" reads, and is something we have
 to fix.
+
+Resources and Links
+~~~~~~~~~~~~~~~~~~~
+
+`This recipe
+<https://github.com/ged-lab/khmer-recipes/tree/master/004-estimate-sequencing-saturation>`__
+is hosted in the khmer-recipes repository,
+https://github.com/ged-lab/khmer-recipes/.
+
+It requires the `khmer software <http://khmer.readthedocs.org>`__.

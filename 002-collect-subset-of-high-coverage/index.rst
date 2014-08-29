@@ -120,3 +120,13 @@ read abundances in ``reads.subset.kh``).  This allows you to more
 explore and subset large data sets than you would otherwise be able
 to, and also avoids some khmer-specific issues with
 counting k-mers that are higher abundance than 255.
+
+Resources and Links
+~~~~~~~~~~~~~~~~~~~
+
+`This recipe
+<https://github.com/ged-lab/khmer-recipes/tree/master/002-collect-subset-of-high-coverage>`__
+is hosted in the khmer-recipes repository,
+https://github.com/ged-lab/khmer-recipes/.
+
+It requires the `khmer software <http://khmer.readthedocs.org>`__.
