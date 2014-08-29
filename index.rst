@@ -13,6 +13,8 @@ Some recipes:
 
    001-extract-reads-by-coverage/index
    002-collect-subset-of-high-coverage/index
+   003-estimate-genome-size/index
+   004-estimate-sequencing-saturation/index
 
 Indices and tables
 ==================
