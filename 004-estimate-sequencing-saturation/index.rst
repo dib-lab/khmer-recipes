@@ -15,7 +15,7 @@ normalize-by-median's reporting, because it collects the redundant
 reads rather than discarding them.
 
 Note: at the moment, the khmer script ``normalize-by-median.py`` needs
-to be updated the master branch of `khmer
+to be updated from the master branch of `khmer
 <https://github.com/ged-lab/khmer>`__ to run this code properly.  Once
 we've cut a new release, we'll remove this note and simply specify the
 khmer release required.
