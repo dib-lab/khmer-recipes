@@ -16,10 +16,10 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
 .PHONY: help clean html dirhtml singlehtml pickle json htmlhelp qthelp devhelp epub latex latexpdf text man changes linkcheck doctest gettext
 
-all: html recipes
+all: recipes html
 
 recipes: 
-	./build-recipes.sh
+	./recipes-all.sh all
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -45,6 +45,7 @@ help:
 
 clean:
 	-rm -rf $(BUILDDIR)/*
+	./recipes-all.sh clean
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) html
