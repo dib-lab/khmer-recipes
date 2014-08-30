@@ -22,7 +22,8 @@ Our current list of recipes:
 
 You can visit the `khmer-recipes GitHub site
 <http://github.com/ged-lab/khmer-recipes>`__ if you would like to
-contribute, fork, or otherwise investigate.
+contribute, fork, or otherwise investigate.  You can also see
+documentation on :doc:`meta`.
 
 :ref:`search`
 
