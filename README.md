@@ -1,4 +1,5 @@
-labibi
-======
+khmer-recipes
+=============
 
-See http://labibi.readthedocs.org/en/latest/
+Recipes for bioinformatics analysis, using `khmer
+<http://khmer.rtfd.org>`__ and other software.
