@@ -175,8 +175,8 @@ htmlhelp_basename = 'labibidoc'
 # Various settings to pass to templates:
 
 html_context = {
-   "google_analytics_id" : '',
-   "disqus_shortname" : '',
+   "google_analytics_id" : 'UA-43434100-2',
+   "disqus_shortname" : 'khmer-recipes',
    "github_base_account" : '',
    "github_project" : '',
 }
