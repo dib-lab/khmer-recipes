@@ -6,7 +6,11 @@
 Welcome to the khmer-recipes site!
 ==================================
 
-Some recipes:
+Hello! This is a list of recipes for various bioinformatics tasks --
+mostly sequence-oriented for now.  The recipes all currently use
+`khmer <http://khmer.rtfd.org>`__ in one way or another.
+
+Our current list of recipes:
 
 .. toctree::
    :maxdepth: 1
@@ -16,10 +20,9 @@ Some recipes:
    003-estimate-genome-size/index
    004-estimate-sequencing-saturation/index
 
-Indices and tables
-==================
+You can visit the `khmer-recipes GitHub site
+<http://github.com/ged-lab/khmer-recipes>`__ if you would like to
+contribute, fork, or otherwise investigate.
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+:ref:`search`
 
