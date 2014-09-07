@@ -103,7 +103,7 @@ original reads, this will then give you _all_ the reads that cluster
 by coverage with that peak.  For example,
 ::
 
-   ~/dev/khmer/sandbox/slice-reads-by-coverage.py reads.subset.kh reads.fa reads-repeats.fa -m 100 -M 200
+   ~/dev/khmer/sandbox/slice-reads-by-coverage.py reads.subset.kh reads.fa reads-repeats.fa -m 200 -M 300
 
 will give you *all* the reads from the repetitive component, which will be
 much higher coverage in the combined data set; take a look:
