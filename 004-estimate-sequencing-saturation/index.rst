@@ -25,26 +25,27 @@ khmer release required.
 .. ::
 
    . ~/dev/ipy7/bin/activate
+   set -e
    
    # make a 500 bp repeat
-   python ~/dev/dbg-graph-null/make-random-genome.py -l 500 -s 10 > repeat.fa
+   python ~/dev/nullgraph/make-random-genome.py -l 500 -s 10 > repeat.fa
    
    # create a genome with 5kb unique sequence interspersed with 5x 500 bp
    # repeats.
    echo '>genome' > genome.fa
    cat repeat.fa | grep -v ^'>' >> genome.fa
-   python ~/dev/dbg-graph-null/make-random-genome.py -l 1000 -s 1 | grep -v ^'>' >> genome.fa
+   python ~/dev/nullgraph/make-random-genome.py -l 1000 -s 1 | grep -v ^'>' >> genome.fa
    cat repeat.fa | grep -v ^'>' >> genome.fa
-   python ~/dev/dbg-graph-null/make-random-genome.py -l 1000 -s 2 | grep -v ^'>' >> genome.fa
+   python ~/dev/nullgraph/make-random-genome.py -l 1000 -s 2 | grep -v ^'>' >> genome.fa
    cat repeat.fa | grep -v ^'>' >> genome.fa
-   python ~/dev/dbg-graph-null/make-random-genome.py -l 1000 -s 3 | grep -v ^'>' >> genome.fa
+   python ~/dev/nullgraph/make-random-genome.py -l 1000 -s 3 | grep -v ^'>' >> genome.fa
    cat repeat.fa | grep -v ^'>' >> genome.fa
-   python ~/dev/dbg-graph-null/make-random-genome.py -l 1000 -s 4 | grep -v ^'>' >> genome.fa
+   python ~/dev/nullgraph/make-random-genome.py -l 1000 -s 4 | grep -v ^'>' >> genome.fa
    cat repeat.fa | grep -v ^'>' >> genome.fa
-   python ~/dev/dbg-graph-null/make-random-genome.py -l 1000 -s 5 | grep -v ^'>' >> genome.fa
+   python ~/dev/nullgraph/make-random-genome.py -l 1000 -s 5 | grep -v ^'>' >> genome.fa
    
    # build a read set
-   python ~/dev/dbg-graph-null/make-reads.py -C 150 genome.fa > reads.fa
+   python ~/dev/nullgraph/make-reads.py -C 150 genome.fa > reads.fa
 
 Let's assume you have a simple genome with some 5x repeats, and you've
 done some shotgun sequencing, and you want to know whether or not you've
