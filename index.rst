@@ -19,6 +19,7 @@ Our current list of recipes:
    002-collect-subset-of-high-coverage/index
    003-estimate-genome-size/index
    004-estimate-sequencing-saturation/index
+   005-estimate-total-genome-size/index
 
 You can visit the `khmer-recipes GitHub site
 <http://github.com/ged-lab/khmer-recipes>`__ if you would like to
@@ -26,4 +27,3 @@ contribute, fork, or otherwise investigate.  You can also see
 documentation on :doc:`meta`.
 
 :ref:`search`
-

@@ -1,0 +1,11 @@
+genome.fa
+reads-genome.fa
+reads-repeats.fa
+reads-slice.fa
+reads.fa
+repeat.fa
+single.fa
+*.kh
+*.kh.info
+index.html
+index.sh
