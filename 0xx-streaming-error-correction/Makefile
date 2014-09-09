@@ -1,10 +1,10 @@
 all: reads.fa.corr index.html
 
 clean:
-	-rm -f index.sh *.fa *.kh *.kh.info *.dist index.html
+	-rm -f index.sh *.fa *.kh *.kh.info *.dist index.html mutation_details.txt\
+		reads.fa.corr reads.fa.details.txt reads.fa.keep reads.keep.ht
 
 distclean: clean
-	-rm -f *.png report.txt reads.fa.keep
 
 index.sh: index.rst
 	~/dev/literate-resting/scan.sh index.rst

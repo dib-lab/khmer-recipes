@@ -60,6 +60,7 @@ in ``reads.fa``, you can get an estimate of the single-copy genome size
    
    normalize-by-median.py -x 1e8 -k 20 -C 20 -s reads.keep.ht reads.fa 
    python ~/dev/khmer/sandbox/read_aligner.py --trusted-cov 5 --theta 1 reads.keep.ht reads.fa > reads.fa.corr 2> reads.fa.details.txt
+   python ~/dev/2013-read-aligner/compare.py  mutation_details.txt reads.fa reads.fa.corr > /dev/null
 
 Resources and Links
 ~~~~~~~~~~~~~~~~~~~
