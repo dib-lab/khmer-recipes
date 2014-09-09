@@ -1,0 +1,10 @@
+*.fa
+*.kh
+*.kh.info
+index.html
+index.sh
+reads.fa.keep
+mutation_details.txt
+reads.fa.corr
+reads.fa.details.txt
+reads.keep.ht
