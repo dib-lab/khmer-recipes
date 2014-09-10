@@ -14,9 +14,8 @@ genomes and low-complexity metagenomes.  For high-complexity
 metagenomes we recommend partitioning.
 
 Note: at the moment, the khmer scripts ``collect-reads.py`` and
-``slice-reads-by-coverage.py`` are in the khmer repository under
-branch `feature/collect_reads
-<https://github.com/ged-lab/khmer/pull/583>`__.  Once we've merged it
+``slice-reads-by-coverage.py`` are on the master branch of the khmer
+repository, but not in any numbered release.  Once we've merged it
 into the master branch and cut a release, we'll remove this note and
 simply specify the khmer release required.
 
