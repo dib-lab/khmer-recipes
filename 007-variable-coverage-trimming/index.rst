@@ -1,13 +1,16 @@
-Recipe 7: Variable abundance trimming
-#####################################
+Recipe 7: Trim metagenome and transcriptome reads with variable coverage k-mer trimming
+#######################################################################################
 
-This is a recipe for trimming your reads at low-abundance k-mers, as
-described in `These are not the k-mers you are looking for: efficient
-online k-mer counting using a probabilistic data structure
-<http://www.ncbi.nlm.nih.gov/pubmed/25062443>`__. Unlike the
-``filter-abund`` script used in that paper, this approach does the
-trimming in a streaming few-pass approach, in which most of the data
-is only looked at once.
+This is a recipe for metagenome and transcriptome k-mer trimming.
+K-mer trimming for genomes (see
+:doc:`../006-streaming-sequence-trimming/index`) relies on using a
+hard cutoff to identify low-abundance k-mers that are likely to be
+erroneous in high coverage genomic shotgun sequencing data sets;
+however, some or many of these k-mers may not be errors in situations
+where you have a variety of molecular species at different abundances
+in your data set -- specifically, when you are sequencing metagenomes
+or transcriptomes.  (This will also work for whole-genome amplified
+data sets.)
 
 Low-abundance k-mer trimming is primarily useful for removing errors
 from short reads prior to assembly or mapping.  This can significantly
@@ -35,7 +38,7 @@ and simply specify the khmer release required.
    # build a read set
    python ~/dev/nullgraph/make-biased-reads.py -C 10 metagenome.fa > reads.fa
 
-Suppose you have a metagenome, with several different coverage peaks;
+Suppose you have a metagenome with several different coverage peaks;
 here, in this simulated data set, there are three: one at 10, one at
 100, and one at about 300.
 ::
@@ -48,7 +51,7 @@ here, in this simulated data set, there are three: one at 10, one at
    :width: 500px
 
 Suppose you wanted to remove errors with k-mer abundance trimming (as
-in :doc:`../006-streaming-error-trimming/index`) - the problem is that
+in :doc:`../006-streaming-sequence-trimming/index`) - the problem is that
 you can't just use a hard cutoff, because some of the low-abundance k-mers
 are real, while some are not.  For example, the k-mer spectrum of this
 data set is much broader at 1 than it would be for a high-coverage
@@ -62,8 +65,10 @@ genome:
    :width: 500px
 
 You can use the -V argument to the sandbox script
-``trim-low-abund.py`` to efficiently trim sequences at these k-mers:
-::
+``trim-low-abund.py`` to efficiently trim sequences at low-abundance
+k-mers that are in high-coverage reads.  With -V, low-abundance k-mers
+in low-coverage reads are kept; these are much more likely to be
+correct than a low-abundance k-mer in a high-coverage read.  ::
 
    ~/dev/khmer/sandbox/trim-low-abund.py -x 1e8 -k 20 -V reads.fa
 
@@ -83,13 +88,6 @@ unique k-mers are now gone:
    :width: 500px
 
 Voila!
-
-As mentioned briefly above, here we are using a more memory- and time-
-efficient approach than the ``filter-abund`` script that we published
-as part of khmer.  Note that you can use this script on metagenomes
-and transcriptomes as well by passing in the ``-V`` parameter for
-variable coverage trimming; we'll talk about that more in another recipe,
-perhaps.
 
 Resources and Links
 ~~~~~~~~~~~~~~~~~~~

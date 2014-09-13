@@ -1,5 +1,5 @@
-Recipe 6: Streaming k-mer abundance trimming
-############################################
+Recipe 6: Error-trim reads using streaming k-mer abundance trimming
+###################################################################
 
 This is a recipe for trimming your reads at low-abundance k-mers, as
 described in `These are not the k-mers you are looking for: efficient
@@ -74,7 +74,8 @@ in this sequence collection are unique
    :width: 500px
 
 For high-coverage genomes, this will generally be due to sequencing
-errors; for variable coverage 
+errors; for variable coverage, this will be a mixture of real and
+erroneous k-mers.
 
 You can use the sandbox script ``trim-low-abund.py`` to efficiently
 trim sequences at these k-mers:
@@ -103,8 +104,7 @@ As mentioned briefly above, here we are using a more memory- and time-
 efficient approach than the ``filter-abund`` script that we published
 as part of khmer.  Note that you can use this script on metagenomes
 and transcriptomes as well by passing in the ``-V`` parameter for
-variable coverage trimming; we'll talk about that more in another recipe,
-perhaps.
+variable coverage trimming; this is discussed more in :doc:`../007-variable-coverage-trimming/index`__.
 
 Resources and Links
 ~~~~~~~~~~~~~~~~~~~

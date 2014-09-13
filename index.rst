@@ -20,6 +20,8 @@ Our current list of recipes:
    003-estimate-genome-size/index
    004-estimate-sequencing-saturation/index
    005-estimate-total-genome-size/index
+   006-streaming-sequence-trimming/index
+   007-variable-coverage-trimming/index
 
 You can visit the `khmer-recipes GitHub site
 <http://github.com/ged-lab/khmer-recipes>`__ if you would like to
