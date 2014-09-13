@@ -73,14 +73,21 @@ in this sequence collection are unique
 .. image:: reads-dist-2.png
    :width: 500px
 
-You can use the sandbox script ``trim-low-abund.py`` to get rid of them
-efficiently
+For high-coverage genomes, this will generally be due to sequencing
+errors; for variable coverage 
+
+You can use the sandbox script ``trim-low-abund.py`` to efficiently
+trim sequences at these k-mers:
 ::
 
    ~/dev/khmer/sandbox/trim-low-abund.py -x 1e8 -k 20 reads.fa
 
+(By default, trim-low-abund trims k-mers that are unique in reads that
+have 20 or higher coverage.  You can change the multiplicity of trimming
+with ``-C`` and the trusted coverage with ``-Z``.)
+
 After running trim-low-abund, you'll note that most of the unique k-mers
-are now gone
+are now gone:
 ::
    
    load-into-counting.py -x 1e8 -k 20 reads-trim.kh reads.fa.abundtrim
