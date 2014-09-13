@@ -19,9 +19,11 @@ MacManes, 2014 <http://www.ncbi.nlm.nih.gov/pubmed/24567737>`__ for
 more information.
 
 Note: at the moment, the khmer script ``trim-low-abund.py`` is in the
-khmer repository under branch @@@.  Once we've merged it into the
-master branch and cut a release, we'll remove this note and simply
-specify the khmer release required.
+khmer repository under branch ``update/streaming``.  Once we've merged
+it into the master branch and cut a release, we'll remove this note
+and simply specify the khmer release required.
+
+.. @@branch fix
 
 .. shell start
 
