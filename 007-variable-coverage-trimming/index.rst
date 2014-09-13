@@ -89,6 +89,18 @@ unique k-mers are now gone:
 
 Voila!
 
+You can see that the abundance of the higher-coverage abundance has shifted,
+due to the trimming; but there are still reads at the 10x peak:
+::
+
+   load-into-counting.py -x 1e8 -k 20 reads-trim.kh reads.fa.abundtrim
+   ~/dev/khmer/sandbox/calc-median-distribution.py reads-trim.kh reads.fa.abundtrim reads-cov-trim.dist
+   ./plot-coverage-dist.py reads-cov-trim.dist reads-cov-trim.png --xmax=350
+
+.. image:: reads-cov-trim.png
+   :width: 500px
+
+
 Resources and Links
 ~~~~~~~~~~~~~~~~~~~
 
