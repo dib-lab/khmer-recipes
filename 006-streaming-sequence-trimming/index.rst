@@ -97,6 +97,8 @@ are now gone:
 .. image:: reads-trim-dist.png
    :width: 500px
 
+Voila!
+
 As mentioned briefly above, here we are using a more memory- and time-
 efficient approach than the ``filter-abund`` script that we published
 as part of khmer.  Note that you can use this script on metagenomes
