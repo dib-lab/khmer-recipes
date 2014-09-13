@@ -1,0 +1,10 @@
+genome.fa
+reads.fa
+repeat.fa
+single.fa
+*.kh
+*.kh.info
+index.html
+index.sh
+reads.fa.abundtrim
+*.dist
