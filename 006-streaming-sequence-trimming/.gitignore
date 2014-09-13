@@ -7,3 +7,4 @@ single.fa
 index.html
 index.sh
 reads.fa.abundtrim
+*.dist
