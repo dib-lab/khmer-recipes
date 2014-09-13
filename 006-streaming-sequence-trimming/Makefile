@@ -1,4 +1,4 @@
-all: reads-repeats.png index.html
+all: reads-trim-dist.png index.html
 
 clean:
 	-rm -f index.sh *.fa *.kh *.kh.info *.dist index.html *.abundtrim
@@ -10,7 +10,7 @@ index.sh: index.rst
 	~/dev/literate-resting/scan.sh index.rst
 	mv index.rst.sh index.sh
 
-reads-repeats.png: index.sh
+reads-trim-dist.png: index.sh
 	bash index.sh
 
 index.html: index.rst
