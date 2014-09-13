@@ -1,7 +1,7 @@
 all: reads-repeats.png index.html
 
 clean:
-	-rm -f index.sh *.fa *.kh *.kh.info *.dist index.html
+	-rm -f index.sh *.fa *.kh *.kh.info *.dist index.html *.abundtrim
 
 distclean: clean
 	-rm -f *.png
