@@ -11,7 +11,7 @@ index.sh: index.rst
 	mv index.rst.sh index.sh
 
 reads-cov.png: index.sh
-	bash index.sh
+	BASH_ENV=../env.sh bash index.sh
 
 index.html: index.rst
 	rst2html.py index.rst index.html

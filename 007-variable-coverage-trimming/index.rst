@@ -27,9 +27,6 @@ more information.
 
 .. ::
 
-   . ~/dev/ipy7/bin/activate
-   set -e
-   
    # build a read set
    python ~/dev/nullgraph/make-biased-reads.py -C 10 metagenome.fa > reads.fa
 

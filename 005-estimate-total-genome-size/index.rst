@@ -21,9 +21,6 @@ sequencing.
 
 .. ::
 
-   . ~/dev/ipy7/bin/activate
-   set -e
-   
    # make a 500 bp repeat
    python ~/dev/nullgraph/make-random-genome.py -l 500 -s 10 > repeat.fa
    
