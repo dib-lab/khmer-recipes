@@ -78,7 +78,7 @@ You can use the sandbox script ``trim-low-abund.py`` to efficiently
 trim sequences at these k-mers:
 ::
 
-   ~/dev/khmer/sandbox/trim-low-abund.py -x 1e8 -k 20 reads.fa
+   trim-low-abund.py -x 1e8 -k 20 reads.fa
 
 (By default, trim-low-abund trims k-mers that are unique in reads that
 have 20 or higher coverage.  You can change the multiplicity of trimming

@@ -1,7 +1,7 @@
 all: reads-trim-dist.png index.html
 
 clean:
-	-rm -f index.sh *.fa *.kh *.kh.info *.dist index.html *.abundtrim
+	-rm -f index.sh reads.fa *.kh *.kh.info *.dist index.html *.abundtrim
 
 distclean: clean
 	-rm -f *.png
