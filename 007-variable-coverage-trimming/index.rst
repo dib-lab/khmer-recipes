@@ -21,11 +21,6 @@ see `On the optimal trimming of high-throughput mRNA sequence data,
 MacManes, 2014 <http://www.ncbi.nlm.nih.gov/pubmed/24567737>`__ for
 more information.
 
-Note: at the moment, the khmer script ``trim-low-abund.py`` is in the
-khmer repository under branch ``update/streaming``.  Once we've merged
-it into the master branch and cut a release, we'll remove this note
-and simply specify the khmer release required.
-
 .. @@branch fix
 
 .. shell start
@@ -64,14 +59,14 @@ genome:
 .. image:: reads-dist.png
    :width: 500px
 
-You can use the -V argument to the sandbox script
+You can use the -V argument to the script
 ``trim-low-abund.py`` to efficiently trim sequences at low-abundance
 k-mers that are in high-coverage reads.  With -V, low-abundance k-mers
 in low-coverage reads are kept; these are much more likely to be
 correct than a low-abundance k-mer in a high-coverage read.
 ::
 
-   ~/dev/khmer/sandbox/trim-low-abund.py -x 1e8 -k 20 -V reads.fa
+   trim-low-abund.py -x 1e8 -k 20 -V reads.fa
 
 (By default, trim-low-abund trims k-mers that are unique in reads that
 have 20 or higher coverage.  You can change the multiplicity of trimming
