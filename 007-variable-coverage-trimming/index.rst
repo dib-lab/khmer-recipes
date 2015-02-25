@@ -68,7 +68,8 @@ You can use the -V argument to the sandbox script
 ``trim-low-abund.py`` to efficiently trim sequences at low-abundance
 k-mers that are in high-coverage reads.  With -V, low-abundance k-mers
 in low-coverage reads are kept; these are much more likely to be
-correct than a low-abundance k-mer in a high-coverage read.  ::
+correct than a low-abundance k-mer in a high-coverage read.
+::
 
    ~/dev/khmer/sandbox/trim-low-abund.py -x 1e8 -k 20 -V reads.fa
 
