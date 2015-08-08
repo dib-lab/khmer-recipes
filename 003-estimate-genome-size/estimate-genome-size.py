@@ -25,7 +25,7 @@ avglen = sumlen / float(n)
 #print avglen, sumlen, n
 
 report_line = open(args.report).readlines()[-1]
-n_total_reads = report_line.split()[1]
+n_total_reads = report_line.split(',')[1]
 n_total_reads = int(n_total_reads)
 
 print 'Estimated (meta)genome size is: %d bp' % (n_total_reads * avglen / args.coverage,)
