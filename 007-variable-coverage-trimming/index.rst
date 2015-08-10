@@ -36,7 +36,7 @@ here, in this simulated data set, there are three: one at 10, one at
 ::
 
    load-into-counting.py -x 1e8 -k 20 reads.kh reads.fa
-   ~/dev/khmer/sandbox/calc-median-distribution.py reads.kh reads.fa reads-cov.dist
+   ~/dev/khmer/sandbox/calc-median-distribution.py -s -z reads.kh reads.fa reads-cov.dist
    ./plot-coverage-dist.py reads-cov.dist reads-cov.png --xmax=350
 
 .. image:: reads-cov.png

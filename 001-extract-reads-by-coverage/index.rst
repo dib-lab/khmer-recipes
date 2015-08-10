@@ -68,7 +68,7 @@ coverage' estimator.  On this data set, the read coverage spectrum can
 be generated like so::
 ::
 
-   ~/dev/khmer/sandbox/calc-median-distribution.py reads.kh reads.fa reads-cov.dist
+   ~/dev/khmer/sandbox/calc-median-distribution.py -s -z reads.kh reads.fa reads-cov.dist
    ./plot-coverage-dist.py reads-cov.dist reads-cov.png --xmax=600 --ymax=500
 
 and looks like this:

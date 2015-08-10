@@ -18,7 +18,7 @@ parser.add_argument('image_output')
 
 args = parser.parse_args()
 
-x = numpy.loadtxt(args.dist_file)
+x = numpy.loadtxt(args.dist_file, delimiter=',', skiprows=1)
 plot(x[:, 0], x[:, 1])
 xlabel('read coverage (estimated)')
 ylabel('# of reads with that coverage')

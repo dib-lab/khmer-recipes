@@ -32,8 +32,13 @@ n_cov = 0.
 
 sum_repeat_cov = 0.
 
+first = True
 for line in open(args.distfile):
-    cov, count = line.split()[:2]
+    if first:                           # skip first row
+        first = False
+        continue
+
+    cov, count = line.split(',')[:2]
     cov = int(cov)
     count = int(count)
 

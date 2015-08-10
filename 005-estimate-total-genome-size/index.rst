@@ -50,7 +50,7 @@ you can generate a read coverage spectrum from your genome like so:
 ::
 
    load-into-counting.py -x 1e8 -k 20 reads.kh reads.fa
-   ~/dev/khmer/sandbox/calc-median-distribution.py reads.kh reads.fa reads-cov.dist
+   ~/dev/khmer/sandbox/calc-median-distribution.py -s -z reads.kh reads.fa reads-cov.dist
    ./plot-coverage-dist.py reads-cov.dist reads-cov.png --xmax=600 --ymax=500
 
 and the result looks like this:
