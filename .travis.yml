@@ -5,8 +5,10 @@ python:
   - "3.5"
 
 install:
-- pip install khmer==2.0
 - pip install screed==0.9
+- pip install pytest
+- git clone https://github.com/dib-lab/khmer.git -v 2.0
+- cd khmer && make all; cd ..
 
 script:
 - echo hi
