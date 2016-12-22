@@ -11,7 +11,7 @@ install:
 - git clone https://github.com/dib-lab/nullgraph.git
 - git clone https://github.com/dib-lab/literate-resting.git
 - git clone https://github.com/dib-lab/khmer.git -b v2.0
-- cd khmer && make all; cd ..
+- cd khmer && make install; cd ..
 
 script:
 - cd 001-extract-reads-by-coverage
