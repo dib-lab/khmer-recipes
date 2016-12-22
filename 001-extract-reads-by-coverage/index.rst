@@ -20,6 +20,11 @@ required.
 
 .. ::
 
+   set -x
+   set -e
+
+.. ::
+
    # make a 500 bp repeat
    python ../../nullgraph/make-random-genome.py -l 500 -s 10 > repeat.fa
    
