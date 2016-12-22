@@ -15,4 +15,5 @@ install:
 script:
 - cd 001-extract-reads-by-coverage
 - ../literate-resting/scan.py index.rst
-- ./index.rst.sh
+- . ./index.rst.sh
+- cd ..
