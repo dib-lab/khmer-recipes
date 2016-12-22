@@ -7,8 +7,11 @@ python:
 install:
 - pip install screed==0.9
 - pip install pytest
-- git clone https://github.com/dib-lab/khmer.git -v 2.0
+- git clone https://github.com/dib-lab/literate-resting.git
+- git clone https://github.com/dib-lab/khmer.git -b v2.0
 - cd khmer && make all; cd ..
 
 script:
-- echo hi
+- cd 001-extract-reads-by-coverage
+- ../literate-resting/scan.py index.rst
+- ./index.rst.sh
