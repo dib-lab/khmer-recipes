@@ -7,6 +7,7 @@ python:
 install:
 - pip install screed==0.9
 - pip install pytest
+- pip install matplotlib
 - git clone https://github.com/dib-lab/nullgraph.git
 - git clone https://github.com/dib-lab/literate-resting.git
 - git clone https://github.com/dib-lab/khmer.git -b v2.0
