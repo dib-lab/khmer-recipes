@@ -2,6 +2,9 @@ language: python
 python:
   - "3.5"
 
-# command to run tests
+install:
+- pip install khmer==2.0
+- pip install screed==0.9
+
 script:
 - echo hi
